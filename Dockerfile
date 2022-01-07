@@ -18,4 +18,6 @@ ENV SSL_KEYFILE /electrumx/electrumx.key
 ENV SERVICES=tcp://:50001,ssl://:50002,wss://:50004,rpc://0.0.0.0:8000
 ENV PEER_DISCOVERY SELF
 
+EXPOSE 50001 50002 50004 8000
+
 CMD ["/electrumx/electrumx_server"]
