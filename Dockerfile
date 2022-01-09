@@ -5,9 +5,10 @@ RUN apk add --no-cache build-base git leveldb-dev openssl && \
     git clone -b 1.16.0 https://github.com/spesmilo/electrumx.git && \
     cd electrumx && \
     pip install --no-cache-dir uvloop . && \
-    openssl req -x509 -nodes -days 3650 -sha256 -newkey rsa:2048 -subj "/CN=electrumx" -keyout electrumx.key -out electrumx.crt && \
     mkdir /data && \
-    apk del build-base git openssl
+    apk del build-base git
+
+COPY ./scripts/start.sh /electrumx/
 
 ENV ALLOW_ROOT 1
 ENV COIN Bitcoin
@@ -20,4 +21,4 @@ ENV PEER_DISCOVERY SELF
 
 EXPOSE 50001 50002 50004 8000
 
-CMD ["/electrumx/electrumx_server"]
+CMD ["/electrumx/start.sh"]
