@@ -17,9 +17,9 @@ ENV DB_DIRECTORY /data
 ENV EVENT_LOOP_POLICY uvloop
 ENV SSL_CERTFILE /electrumx/electrumx.crt
 ENV SSL_KEYFILE /electrumx/electrumx.key
-ENV SERVICES=tcp://:50001,ssl://:50002,wss://:50004,rpc://0.0.0.0:8000
+ENV SERVICES=ssl://:50002,wss://:50004
 ENV PEER_DISCOVERY SELF
 
-EXPOSE 50001 50002 50004 8000
+EXPOSE 50002 50004
 
 CMD ["/electrumx/start.sh"]
