@@ -1,12 +1,13 @@
 FROM python:3.10.1-alpine3.15
 
-RUN apk add --no-cache build-base git leveldb-dev openssl && \
+RUN apk add --no-cache build-base leveldb-dev openssl && \
     apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing rocksdb-dev && \
-    git clone -b 1.16.0 https://github.com/spesmilo/electrumx.git && \
-    cd electrumx && \
-    pip install --no-cache-dir uvloop . && \
+    pip install --no-cache-dir uvloop e-x==1.16.0 && \
+    chmod +x /usr/local/bin/electrumx_* && \
+    dos2unix /usr/local/bin/electrumx_* && \
     mkdir /data && \
-    apk del build-base git
+    mkdir /electrumx && \
+    apk del build-base
 
 COPY ./scripts/start.sh /electrumx/
 
