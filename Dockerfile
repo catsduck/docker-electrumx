@@ -15,8 +15,8 @@ ENV ALLOW_ROOT 1
 ENV COIN Bitcoin
 ENV DB_DIRECTORY /data
 ENV EVENT_LOOP_POLICY uvloop
-ENV SSL_CERTFILE /electrumx/electrumx.crt
-ENV SSL_KEYFILE /electrumx/electrumx.key
+ENV SSL_CERTFILE /data/electrumx.crt
+ENV SSL_KEYFILE /data/electrumx.key
 ENV SERVICES=ssl://:50002,wss://:50004
 ENV PEER_DISCOVERY SELF
 
