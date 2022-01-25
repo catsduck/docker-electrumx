@@ -31,6 +31,15 @@ jobs:
         username: catsduck
         password: ${{ secrets.DOCKER_PASSWORD }}
 
+    - name: Build and export to Docker
+      uses: docker/build-push-action@v2
+      with:
+        load: true
+        tags: catsduck/electrumx:test
+
+    - name: Test container
+      run: docker run --rm catsduck/electrumx:test
+        
     - name: Build and push the Docker image
       uses: docker/build-push-action@v2
       with:
